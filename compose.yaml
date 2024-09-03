@@ -1,0 +1,8 @@
+services:
+  hello:
+    image: localhost/getting-started
+    container_name: getting-started
+    expose: "3000"
+    ports:
+        - "3000:3000"
+    network: slirp4netns:enable_ipv6=true

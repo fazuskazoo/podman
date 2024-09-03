@@ -1,0 +1,8 @@
+services:
+  volume_one:
+     image: localhost/server_volume:latest
+     container_name: server_volume 
+     restart: always
+     volumes:
+       - /home/fazuskazoo/volume_one/:/usr/src/app/volume_one:Z
+     command: [ "/usr/local/bin/node", "/usr/src/app/server.js"] 

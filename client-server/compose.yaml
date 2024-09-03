@@ -1,0 +1,25 @@
+services:
+  server:
+    image: localhost/nodejs-server:latest
+    container_name: nodejs-server
+    restart: always
+    ports:
+      - '8080:80'
+    networks:
+      - server 
+
+  client:
+    image: localhost/nodejs-client:latest 
+    container_name: nodejs-client
+    restart: always 
+    depends on:
+      - server
+    networks:
+      - server 
+    
+    entrypoint: /bin/sh 
+    command: -c "curl http://server:8080/hello"
+
+networks:
+  server:
+    driver: bridge
